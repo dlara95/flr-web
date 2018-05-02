@@ -1,0 +1,94 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Reservation</ion-title>
+    </ion-navbar>
+    
+    </ion-header>
+    
+    
+    <ion-content padding>
+      <ion-row>
+        <ion-col col-12>
+          <h1 class="dark">confirmed<ion-icon name="checkmark-circle"></ion-icon></h1>
+        </ion-col>
+      </ion-row>
+      <ion-col col-12 class="separate-line-container">
+        <div class="separate-line"></div>
+      </ion-col>
+      <ion-row class="booking">
+        <ion-col col-12>
+          <b>Booking # </b>{{bookingID}}
+        </ion-col>
+        <ion-col col-12>
+          <b>Booking Date</b> {{bookingDate | amUtc | amDateFormat: 'MM-DD-YYYY'}}
+        </ion-col>
+        <ion-col col-12>
+          <span class="gray">Receipt has been emailed to you.</span>	
+        </ion-col>
+          
+      </ion-row>
+      <ion-col col-12 class="separate-line-container">
+        <div class="separate-line"></div>
+      </ion-col>
+      <ion-row>
+        <ion-col col-12>
+          <h3>Reservation Summary</h3>
+          <p>
+            {{productName}}
+          </p>
+          
+        </ion-col>
+        <ion-col col-6>
+          <div class="summary">
+            <h3>Activity</h3>
+            {{productName}}
+          </div>
+          
+        </ion-col>
+        <ion-col col-6>
+            <div class="summary">
+                <h3>Quantity</h3>
+                {{qty}}
+              </div>
+        </ion-col>
+        <ion-col col-6>
+          <div class="summary">
+            <h3>Starts <img src="assets/imgs/calendar-icon.png" width="20" alt=""></h3>
+            {{startDate |amUtc | amDateFormat: 'MMM DD'}}, {{tConvert(startHour)}}
+          </div>
+        </ion-col>
+        <ion-col col-6>
+          
+          <div class="summary">
+            <div>
+              <h3>Ends <img src="assets/imgs/calendar-icon.png" width="20" alt=""></h3>
+              {{endDate | amUtc | amDateFormat: 'MMM DD'}}, {{tConvert(endHour)}}
+            </div>
+          </div>
+        </ion-col>
+        <ion-col col-12>
+            <div class="summary">
+                <span class="label"> # In Party</span> 
+                <span class="price-val">{{people}}</span>
+              </div>
+          <div class="summary">
+            <span class="label">Price:</span> 
+            <span class="price-val">USD {{price}}</span>
+          </div>
+          <div class="summary">
+            <span class="label">Payment Amount:</span>
+            <span class="payment-val">USD {{getAmount()}}</span>
+          </div>
+        </ion-col>
+      </ion-row>
+      <!-- <ion-row class="map-reservation">
+      </ion-row> -->
+      <div id="map_canvas3" #map_canvas3 style="height: 140px;"></div>
+    </ion-content>
+    <!-- <ion-footer>
+        <button class="full-custom-btn" ion-button clear>
+           MODIFY 
+          </button>
+    </ion-footer> -->
+   

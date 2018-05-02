@@ -1,0 +1,27 @@
+<ion-header>
+
+  <ion-navbar>
+      <ion-title>Requests</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card *ngFor="let req of requests">
+    <ion-card-content>
+      <ion-card-title>
+        {{req.inquiryMessage}}
+        </ion-card-title>
+      <p>
+        {{req.inquiryName}}
+        <br>
+        {{req.inquiryEmail}}
+        <br>
+        {{req.inquiryPhone}}
+        <br>
+        {{req.inquiryCreatedAts | amTimeAgo }}
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,45 @@
+page-favorites {
+
+    .toolbar-background {
+        background: #ff6633;
+        color: #fff;
+    }
+    .bar-button,
+    .toolbar-title {
+        color: #fff;
+    }
+    .circle-bg {
+        height: 130px;
+        border-radius: 50%;
+        max-width: 130px;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        margin-top: 30px;
+        position: relative;
+    }
+    .icon-top {
+        position: absolute;
+        right: 15px;
+        background: #ff6633;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        line-height: 25px;
+        color: #fff !important;
+    }
+    h3 {
+        text-align: center;
+        font-size: 18px;
+    }
+    p {
+        text-align: center;
+        color: gray;
+    }
+
+}
+
+.loader-text-center{
+    text-align: center;
+}

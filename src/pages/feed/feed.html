@@ -1,0 +1,86 @@
+<ion-header>
+  
+  <ion-navbar>
+      <ion-buttons end>
+          <button ion-button icon-only menuToggle="flrMenu">
+            <ion-icon name="ios-menu-outline"></ion-icon>
+          </button>
+      </ion-buttons>
+     
+  </ion-navbar>
+
+</ion-header>
+<ion-content #feed>
+    <div class="verification-box" *ngIf="!verified">
+        Go to your mailbox {{email}} and verify your email please
+    </div>
+    
+<img src="assets/imgs/feeb-bg.png" alt="">
+
+
+</ion-content >
+<ion-footer class="custom-footer">
+    <button icon-right class="full-custom-btn" ion-button full (click)="goToNearbyActivities()">
+      Explore Things To Do
+      <ion-icon name="ios-arrow-forward" style="color: #fff !important;"></ion-icon>
+    </button>
+  </ion-footer>
+
+  <!-- page specific menu -->
+<ion-menu id="flrMenu" persistent="true" side="left" [content]="feed">
+
+    
+    <ion-content padding>
+        <ion-row style="justify-content:center;">
+            <ion-col col-12 class="center">
+                <img [src]="photo_url" alt="" style="border-radius: 50%; max-height: 60px;">
+            </ion-col>
+            <ion-col col-12 class="center">
+                <h2>{{username}}</h2>
+                <button class="menu-btn-transparent" ion-button clear (click)="goToEditProfile()">Edit Profile</button>
+            </ion-col>
+
+
+        </ion-row>
+      
+        <ion-list class="menu-list">
+            <ion-item (click)="goToNearbyActivities()">
+                <ion-icon name="ios-pin" item-start></ion-icon>
+                Find Activity
+            </ion-item>
+            <ion-item (click)="goToReservations()">
+                <ion-icon name="md-calendar" item-start></ion-icon>
+                Reservations
+            </ion-item>
+            <ion-item (click)="goToRequests()">
+                <ion-icon name="ios-chatbubbles" item-start></ion-icon>
+                Requests
+            </ion-item>
+            <ion-item (click)="goToReview()">
+                    <ion-icon name="ios-star" item-start></ion-icon>
+                    Reviews
+                </ion-item>
+            <ion-item (click)="goToFavorites()">
+                <ion-icon name="ios-heart" item-start></ion-icon>
+                Favorites
+            </ion-item>   
+            <ion-item>
+                <ion-icon name="ios-help-circle-outline" item-start></ion-icon>
+                Help
+            </ion-item>    
+            <ion-item (click)="goToTerms()">
+                <ion-icon name="ios-document-outline" item-start></ion-icon>
+                Terms
+            </ion-item>
+            <ion-item>
+                <ion-icon name="ios-cog-outline" item-start></ion-icon>
+                Itinerary
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <ion-footer>
+        <button class="menu-full-custom-btn" ion-button full (click)="logout()">
+                    Log out
+            </button>
+    </ion-footer>
+  </ion-menu>

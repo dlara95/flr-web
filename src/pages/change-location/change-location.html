@@ -1,0 +1,27 @@
+
+
+<ion-content padding>
+  <div style="height: 50px;"></div>
+  <button ion-button icon-only transparent class="close-custom-btn" (click)="close()">
+    <ion-icon name="ios-close"></ion-icon>
+  </button>
+  <ion-row>
+    <h1>UPDATE</h1>
+  </ion-row>
+  <ion-row>
+      <form action="." (ngSubmit)="getLocation()">
+
+      <!-- <ion-searchbar type="search" [(ngModel)]="searchTerm" [ngModelOptions]="{standalone: true}"
+          ></ion-searchbar> -->
+      <google-places-autocomplete [(ngModel)]="searchTerm" [ngModelOptions]="{standalone: true}" (callback)="detail($event[0])" key="AIzaSyAG8YwO3jnFYNYfiV1B35FzICVOYVJYnMQ" placeholder="Enter new location"></google-places-autocomplete>
+
+     </form>
+  </ion-row>
+
+  <ion-row>
+    <button ion-button (click)="getLocation()">APPLY CHANGES </button>
+  </ion-row>
+  <ion-row>
+    <button ion-button (click)="getCurrentLocation()">Use current location</button>
+  </ion-row>
+</ion-content>

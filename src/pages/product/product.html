@@ -1,0 +1,312 @@
+
+<ion-header>
+
+  <ion-navbar>
+	<ion-title>{{operator_name}} </ion-title>
+	<ion-buttons item-end> 
+			<button ion-button icon-only class="back-btn" (click)="back()"><ion-icon name="close"></ion-icon></button>		
+	  </ion-buttons>
+  </ion-navbar>
+ 
+</ion-header>
+
+<ion-content>
+		<ion-card class="product-image" [ngStyle]="{'background': 'url(' + image + ')'}">
+				<!-- <img src="assets/imgs/placeholder.png"> -->
+			</ion-card>
+	<ion-row padding>
+		<ion-col col-10 class="bottom-none">
+			<h3 class="direction bottom-none">{{operator_name}} ({{miles}})</h3>
+		</ion-col>
+		<ion-col col-2 class="right bottom-none">
+			<img src="assets/imgs/arrow-rigth.png" width="20" height="20">
+		</ion-col>
+		<ion-col col-10 class="bottom-none">
+			
+			<div class="rating-box">
+				<rating [(ngModel)]="stars" 
+			  readOnly="true" 
+			  max="5" 
+			  emptyStarIconName="star-outline" 
+			  halfStarIconName="star-half" 
+			  starIconName="star" 
+			  nullable="false" 
+			  rating
+			  value="stars"></rating>
+			  <span class="count" *ngIf="count_stars != null">({{count_stars}}) </span>
+			  </div>
+		</ion-col>
+		<ion-col col-2 class="right bottom-none" *ngIf="enable">
+			<button *ngIf="!liked" (click)="addToFav()" class="transparent"><ion-icon name="heart-outline" md="md-heart-outline" class="gray-heart"></ion-icon></button>
+			<button *ngIf="liked"  class="transparent"><ion-icon name="ios-heart"></ion-icon></button>
+
+		</ion-col>
+		<ion-col col-12 class="bottom-none">
+			<div class="separate-line"></div>
+		</ion-col>
+		<div *ngIf="enableInquiry">
+			
+			<ion-col col-12>
+					<h3 class="dark">{{productName}}</h3>
+			</ion-col>
+			<ion-col col-12>
+				<div class="separate-line"></div>
+			</ion-col>
+			<ion-col col-12 class="center">
+				<img src="assets/imgs/Canoe.png" alt="" style="width: 300px;">
+				<br>
+				<p>Availability cannot be determinated at this time. Not to worry! Help is
+					one step away. Send a request for immediate assistance.
+				</p>
+			</ion-col>
+
+
+		</div>
+
+		<!-- Pick Start Date -->
+		<div *ngIf="enableDates" class="main-div-product">
+		
+		
+
+		<div *ngIf="pricesRow">
+			<ion-row>
+				<ion-col col-7>
+					<h3 class="dark margin-5">Activity</h3>
+					<span>{{productName}} ({{reserveCount}} Passengers)</span>
+				</ion-col>
+				<ion-col col-5>
+					<h3 class="dark margin-5 center">Quantity</h3>
+					<div style="text-align:center;" >
+						<button  class="transparent" full (click)="timesCount()"><ion-icon name="add"></ion-icon></button><span class="square">{{reserveCount}}</span><button (click)="dicreaseCount()" class="transparent"><ion-icon name="remove"></ion-icon></button>
+					</div>
+					
+				</ion-col>
+			</ion-row>
+			
+		<h3 class="dark">Choose price plan</h3> 
+
+		<ion-row (click)="onButtonGroupClick($event)" class="date-row" style="width:100%; flex-wrap: wrap;">
+			<button col-4 class="orange-border" *ngFor="let price of prices" style="max-width:31%" (click)="choosePrice(price.price, price.timing)">
+				{{price.timing}} <br>  USD {{price.price}}
+			</button>
+					
+		</ion-row>
+						
+	</div>
+	<div *ngIf="enablePicker">
+			<ion-row>
+					<ion-col col-7>
+						<h3 class="dark margin-5">Activity</h3>
+						<span>{{productName}} ({{reserveCount}} Passengers)</span>
+					</ion-col>
+					<ion-col col-5>
+						<h3 class="dark margin-5 center">Quantity</h3>
+						<div style="text-align:center;">
+							<span >{{reserveCount}}</span>
+
+						</div>
+					</ion-col>
+				</ion-row>
+	</div>
+		
+		<ion-row *ngIf="enablePicker" class="type-increase">
+				<ion-col col-5>
+						<button col-10 class="orange-border orange-bg" style="margin-bottom:0;">
+								{{pricePlan}}<br>USD {{price}}
+						   </button>
+					</ion-col>
+					<ion-col col-5 >
+							<h3 class="dark center margin-5" style="text-align: left;"># of {{type}}</h3>
+
+							<button class="transparent" (click)="increaseDays()"><ion-icon name="add"></ion-icon></button><span class="square">{{daysQty}}</span><button (click)="decreaseDays()" class="transparent"><ion-icon name="remove"></ion-icon></button>
+					</ion-col>
+		</ion-row>
+	
+		
+		<div *ngIf="enablePicker">
+		<ion-col col-12 class="bottom-none">
+			<div class="separate-line"></div>
+		</ion-col>
+		<ion-row>
+			<ion-col col-6>
+				<h3 class="dark-light">Pick {{rowText}} date below</h3>
+			</ion-col>
+			<ion-col col-6 class="picker-label" (click)="updatePicker()">
+				<span class="orange-txt"> Pick another date</span>
+			</ion-col>
+		</ion-row>
+		
+		<ion-col col-12 [ngStyle]="{'display': showPicker ? 'block' : 'none'}">
+			<!-- <h3 class="dark-light">Pick another {{rowText}} date</h3> -->
+			<ion-item>
+				<ion-label>Pick Another Date</ion-label>
+				<ion-datetime id="dateTimeUpdate" #dateTimeUpdate displayFormat="MMM DD YYYY" pickerFormat="MMM DD YYYY"  [(ngModel)]="timeStarts" (ngModelChange)="updateDate()"></ion-datetime>
+				<!-- <button (click)="updateDate()" item-end ion-button clear>Update</button> -->
+
+			</ion-item>
+		</ion-col>
+
+		 <ion-row (click)="onButtonGroupClick($event)" class="date-row" >
+
+			<!-- <button col-4 class="orange-border orange-bg" *ngIf="i == 0" >
+       			{{date.day_name}} <br> {{date.date}}
+			  </button> -->
+			  
+			  <button col-4 [class]="firstColor" [disabled]="disableFirst" (click)="firstTab(dates[0]?.date)">
+					{{dates[0]?.day_name}} <br> {{dates[0]?.date | amUtc | amDateFormat: 'MMM DD,YYYY' }}
+			   </button>
+			   <button col-4 (click)="secondTab(dates[1]?.date)"  [class]="secondColor">
+					{{dates[1]?.day_name}} <br> {{dates[1]?.date | amUtc | amDateFormat: 'MMM DD,YYYY'}}
+			   </button>
+			   <button col-4 class="orange-border"  (click)="thirdTab(dates[2]?.date)">
+					{{dates[2]?.day_name}} <br> {{dates[2]?.date | amUtc | amDateFormat: 'MMM DD,YYYY' }}
+			   </button>
+
+			   <!-- <button col-4 class="orange-border" *ngIf="i == 2" >
+					{{date.day_name}} <br> {{date.date}}
+			   </button> -->
+			
+			
+		</ion-row> 
+		<ion-col col-12>
+			<h3 class="dark-light">Pick {{rowText}} time</h3>
+		</ion-col>
+		<ion-row (click)="onButtonGroupClick($event)" class="activity-row" *ngIf="enableFirst">
+			<button  (click)="setStartHour(hour.start_hours)"  [disabled]="hour.start_hours <= currentHour ? true : false" class="orange-border time" *ngFor="let hour of dates[0]?.hours"  >
+				{{tConvert(hour.start_hours)}}
+			</button>
+		
+	</ion-row>
+	<ion-row (click)="onButtonGroupClick($event)" class="activity-row" *ngIf="filteredFirstDate">
+		<button  (click)="setStartHour(hour.start_hours)"   class="orange-border time" *ngFor="let hour of dates[0]?.hours"  >
+			{{tConvert(hour.start_hours)}}
+		</button>
+	
+</ion-row>
+    <ion-row (click)="onButtonGroupClick($event)" class="activity-row" *ngIf="enableSecond">
+			<button (click)="setStartHour(hour.start_hours)" class="orange-border time" *ngFor="let hour of dates[1]?.hours">
+					{{tConvert(hour.start_hours)}}
+				</button>
+		
+    </ion-row>
+    <ion-row (click)="onButtonGroupClick($event)" class="activity-row" *ngIf="enableThird">
+			<button (click)="setStartHour(hour.start_hours)" class="orange-border time" *ngFor="let hour of dates[2]?.hours">
+					{{tConvert(hour.start_hours)}}
+				</button>
+		
+		</ion-row>
+	</div>
+	</div>
+
+
+
+	<!-- Pick End Date -->
+
+	<div *ngIf="enableEndDate">
+		
+		<ion-row>
+				<ion-col col-7>
+					<h3 class="dark margin-5">Activity</h3>
+					<span>{{productName}} ({{reserveCount}} Passengers)</span>
+				</ion-col>
+				<ion-col col-5>
+					<h3 class="dark margin-5 center">Quantity</h3>
+					<button class="transparent" full (click)="timesCount()"><ion-icon name="add"></ion-icon></button><span class="square">{{reserveCount}}</span><button (click)="dicreaseCount()" class="transparent"><ion-icon name="remove"></ion-icon></button>
+				</ion-col>
+			</ion-row>
+
+		<ion-row class="type-increase">
+				<ion-col col-6>
+						<button col-8 class="orange-border orange-bg">
+								{{pricePlan}}<br>USD {{price}}
+						   </button>
+						
+					</ion-col>
+					
+		</ion-row>
+		
+		
+		<ion-col col-12 *ngIf="enableEndDateRow">
+			<div class="separate-line"></div>
+		</ion-col>
+		<ion-col col-12 *ngIf="enableEndDateRow">
+			<h3 class="dark-light">Pick activity {{rowText}} date</h3>
+		</ion-col>
+		<ion-col col-12 *ngIf="enableEndDateRow">
+			<!-- <h3 class="dark-light">Pick another {{rowText}} date</h3> -->
+			<ion-item>
+				<ion-label>Pick Another Date</ion-label>
+				<ion-datetime displayFormat="MMM DD YYYY" pickerFormat="MMM DD YYYY"  [(ngModel)]="timeEnd" (ngModelChange)="updateEndDate()"></ion-datetime>
+				<!-- <button (click)="updateEndDate()" item-end ion-button clear>Update</button> -->
+
+			</ion-item>
+		</ion-col>
+
+		 <ion-row *ngIf="enableEndDateRow" (click)="onButtonGroupClick($event)" class="date-row" >
+
+			<!-- <button col-4 class="orange-border orange-bg" *ngIf="i == 0" >
+       			{{date.day_name}} <br> {{date.date}}
+			  </button> -->
+			  
+			  <button col-4 [class]="firstColor" [disabled]="disableFirst">
+					{{datesEnd[0]?.day_name}} <br> {{datesEnd[0]?.date | amUtc | amDateFormat: 'MM-DD-YYYY' }}
+			   </button>
+			   <button col-4 (click)="secondEndTab(datesEnd[1]?.date)"  [class]="secondColor">
+					{{datesEnd[1]?.day_name}} <br> {{datesEnd[1]?.date | amUtc | amDateFormat: 'MM-DD-YYYY'}}
+			   </button> 
+			   <button col-4 class="orange-border"  (click)="thirdEndTab(datesEnd[2]?.date)">
+					{{datesEnd[2]?.day_name}} <br> {{datesEnd[2]?.date | amUtc | amDateFormat: 'MM-DD-YYYY' }}
+			   </button>
+
+			   <!-- <button col-4 class="orange-border" *ngIf="i == 2" >
+					{{date.day_name}} <br> {{date.date}}
+			   </button> -->
+			
+			
+		</ion-row> 
+		<ion-col col-12 *ngIf="enableEndTimeRow">
+			<h3 class="dark-light">Pick activity {{rowText}} time</h3>
+		</ion-col>
+		<div *ngIf="enableEndTimeRow">
+				<ion-row (click)="onButtonGroupClick($event)" class="activity-row" *ngIf="enableSecond">
+						<button [disabled]="hour.start_hours <= this.startHour ? true : false" (click)="setEndHour(hour.start_hours)" class="orange-border time" *ngFor="let hour of datesEnd[1]?.hours">
+								{{tConvert(hour.start_hours)}}
+							</button>
+					
+				</ion-row>
+				<ion-row (click)="onButtonGroupClick($event)" class="activity-row" *ngIf="enableThird">
+						<button [disabled]="hour.start_hours <= this.startHour ? true : false" (click)="setEndHour(hour.start_hours)" class="orange-border time" *ngFor="let hour of datesEnd[2]?.hours">
+								{{tConvert(hour.start_hours)}}
+							</button>
+					
+					</ion-row>
+		</div>
+		
+   
+	</div>
+
+	</ion-row>
+	<div style="height: 50px;"></div>
+
+</ion-content>
+<ion-footer *ngIf="enablePicker">
+    <button *ngIf="enableContinue" class="full-custom-btn" ion-button clear (click)="enableTabs()">
+       Continue  
+	  </button>
+	  <button *ngIf="!enableContinue" class="full-custom-btn" ion-button clear (click)="reservate()">
+		Continue  
+	   </button>
+</ion-footer>
+<ion-footer *ngIf="enableEndDate">
+
+	  <button *ngIf="!enableContinue" class="full-custom-btn" ion-button clear (click)="reservate()">
+		Continue  
+	   </button>
+</ion-footer>
+
+<ion-footer *ngIf="enableInquiry">
+		<button  class="full-custom-btn" ion-button clear (click)="request()">
+		   Send request  
+		  </button>
+		
+	</ion-footer>

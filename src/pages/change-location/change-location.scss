@@ -1,0 +1,49 @@
+page-change-location {
+    .toolbar-background {
+		background: #f68f54;
+	}
+	.toolbar-title{
+		color: white;
+		font-weight: lighter;
+	}
+	ion-row{
+		justify-content: center;
+		h1{
+			font-size: 20px;
+		}
+		p{
+			color: gray;
+		}
+		button{
+			background-color: #ed640a !important;
+			box-shadow: none !important;
+			border-radius: 0 !important;
+			text-transform: uppercase !important;
+		}
+		.searchbar-input{
+			box-shadow: none !important;
+			border: 1px solid #ed640a !important;
+		}
+	}
+	ion-label{
+		white-space: normal !important;
+	}
+
+	ion-content{
+		background-color: transparent !important;
+		background: linear-gradient(180deg, #fff 65%, rgba(0,0,0, .7) 50%);
+	}
+
+	.close-custom-btn{
+		position: absolute;
+		top: 5px;
+		right: 0;
+		background: transparent;
+		box-shadow: none;
+		font-size: 25px;
+		ion-icon{
+			color: #000;
+		}
+	
+	}
+}

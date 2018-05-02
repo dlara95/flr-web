@@ -1,0 +1,145 @@
+ion-app._gmaps_cdv_ .nav-decor {
+	background-color: transparent !important;
+   }
+
+   
+page-modify-reservation {
+	ion-content{
+		background: #fff !important;
+	}
+    /*header*/
+	.toolbar-background {
+		background: #f68f54;
+	}
+	.toolbar-title{
+		color: white;
+		font-weight: lighter;
+		text-align: center;
+		padding-right: 0 !important;
+	}
+	
+	.ion-md-close{
+		float: right;
+	}
+	.ion-ios-close{
+		float: right;
+		font-size: 2.4rem;
+	}
+	.back-btn{float: right; color: white; background: transparent;}
+	.back-button-text-ios{display: none;}
+	.ion-md-close{float: right;}
+	.back-button-icon{color: white;}
+	/*gray separate line*/
+	.separate-line-container{padding: 0}
+	.separate-line{
+		border-bottom: 2px solid #f0f1f2;
+		margin:5px 0;
+	}
+	/*checkmark icon*/
+	.ion-md-checkmark-circle{
+		color: #a3c53f;
+    	float: right;
+	}
+	.ion-ios-checkmark-circle{
+		color: #a3c53f;
+    	float: right;
+	}
+	/*font style*/
+	.dark{
+		font-weight: bold;
+		text-transform: uppercase;
+		margin-bottom: 0px;
+	}
+	.gray{
+		color: #a8999c;
+	}
+	h3 , .label{
+		font-weight: bold;
+    	font-size: 1.7rem;
+	}
+	/*star ranking*/
+	.star{
+		color: #7d7b7b;
+		margin:0;
+	}
+	.yellow-star{
+		color: #ffc627;
+	}
+	.gray-star{
+		color: #cccccc;
+	}
+	.summary{
+		margin-bottom: 20px;
+	}
+	.booking .col{
+		padding-bottom: 0
+	}
+	.map-reservation{
+		background: url(../../assets/imgs/map-reservation.jpg);
+	    background-size: contain;
+	    background-repeat: no-repeat;
+	    background-position: center;
+	    margin: 0 -18px -16px -16px;
+	    height: 141px;
+	}
+	ion-footer{
+		background: #ed640a;
+		text-align: center;
+	}
+	.footer-md .button-clear-md{height: 4rem}
+	.footer-ios .button-ios{height: 4rem}
+}
+
+/*buttons*/
+.full-custom-btn{
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    color: white;
+	text-align: center;
+	padding: 25px;
+	letter-spacing: 1px;
+}
+.orange-btn{
+background: #ed640a;
+text-align: center;
+color: white;
+text-transform: uppercase;
+border-radius: 0;
+min-width: 190px;
+max-width: 190px;
+margin-bottom: 30px;
+height: 3.5em;
+}
+/*overlay effect*/
+.overlay{
+    position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: 20;
+  top: 0;
+  left: 0;
+  align-items: center;
+    flex-direction: column;
+}
+.overlay-info{
+    position: absolute;
+    top: 20%;
+    text-align: center;
+    h1{
+        color: white;
+        font-weight: lighter;
+    }
+}
+.close-container{
+    color: white;
+    width: 100%;
+    font-size: 2rem;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+
+page-modify-reservation.ion-page._gmaps_cdv_.show-page{
+	background-color: #fff !important;
+}

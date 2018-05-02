@@ -1,0 +1,64 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Payment Information</ion-title>
+    </ion-navbar>
+    
+    </ion-header>
+    
+     
+    <ion-content >
+     
+      <h3 class="dark">Enter Credit Card Details</h3>
+      <!-- <ion-row>
+        <img src="assets/imgs/tarjetas.png" alt="">
+      </ion-row> -->
+  
+      <ion-row>
+        <ion-item>
+          <ion-input placeholder="NAME ON CARD" [(ngModel)]="name"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input type="number" pattern="\\d*" placeholder="CARD NUMBER" [(ngModel)]="account"></ion-input>
+        </ion-item>
+        <ion-col col-7>
+          <ion-item>
+            <ion-input type="number" pattern="\\d*" placeholder="EXPIRE DATE (MMYY)" [(ngModel)]="expiry"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col col-3>
+          <ion-item>
+            <ion-input type="number" pattern="\\d*" max="3" placeholder="CVV" [(ngModel)]="cvv2"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col col-2>
+          <button (click)="badgeAlert()" ion-button clear icon-only><ion-icon name="md-help-circle"></ion-icon></button>
+
+        </ion-col>
+        <ion-col col-8>
+          <ion-item>
+            <ion-input type="number" pattern="\\d*" max="9" placeholder="ZIP CODE" [(ngModel)]="postal"></ion-input>
+          </ion-item>
+        </ion-col>
+      
+        <ion-col col-12>
+          <ion-item class="terms-item">
+            <ion-label (click)="goToTerms()">Read Terms &amp; Conditions</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>I agree with terms and conditions</ion-label>
+            <ion-checkbox  [(ngModel)]="checked" (ionChange)="updateTerms()"></ion-checkbox>
+          </ion-item>
+          <!-- <ion-item>
+            <ion-label>Save card on file </ion-label>
+            <ion-checkbox checked="true"></ion-checkbox>
+          </ion-item> -->
+        </ion-col>
+      </ion-row>
+    </ion-content>
+    <ion-footer>
+        <button class="full-custom-btn" ion-button clear (click)="showMe()">
+          PAY &amp; RESERVE
+          </button>
+    </ion-footer>

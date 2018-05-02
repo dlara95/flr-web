@@ -1,0 +1,38 @@
+page-feed {
+    .toolbar-background{
+        background: none !important;
+        border: none !important;
+        box-shadow: 0 !important;
+    }
+
+    .header-md::after, .header-ios::after{
+        background: none !important;
+    }
+    .icon-md, .ion-ios-menu-outline{
+        color: #ff6633 !important;
+    }
+
+    .full-custom-btn {
+        margin-bottom: 0;
+        text-transform: uppercase;
+        font-weight: 900;
+        background: #ff6633;
+        height: 5rem !important;
+        ion-icon{
+            position: absolute;
+            right: 10px;
+        }
+    }
+    .verification-box{
+        padding: 10px;
+        background: rgba(255, 124, 57, 0.7);
+    }
+
+    ion-icon{
+        color: #ff6633 !important;
+    }
+}
+
+#flrMenu{
+    z-index: 99;
+}

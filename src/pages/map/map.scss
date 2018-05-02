@@ -1,0 +1,46 @@
+page-map {
+    .toolbar-background {
+		background: #ed640a;
+        color: #fff !important;
+	}
+	.toolbar-title{
+		color: white;
+		font-weight: lighter;
+		text-align: center;
+    }
+	.back-button-icon{color: white;}
+	.back-button-text-ios{display: none;}
+
+	ion-footer{
+		background: #ed640a;
+		text-align: center;
+	}
+	.footer-md .button-clear-md{height: 4rem}
+	.footer-ios .button-ios{height: 4rem}
+
+
+/*buttons*/
+.full-custom-btn{
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    color: white;
+	text-align: center;
+	padding: 20px;
+}
+
+ion-content{
+    background: rgb(229, 227, 223);
+    #map {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 150ms ease-in;
+      display: block;
+      &.show-map{
+        opacity: 1;
+      }
+    }
+  }
+
+
+}

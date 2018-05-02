@@ -1,0 +1,47 @@
+<ion-header>
+  
+  <ion-navbar>
+      <ion-buttons start>
+          <!-- <button ion-button icon-only>
+      <ion-icon name="md-arrow-round-back"></ion-icon>
+    </button> -->
+      </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding style="background: url(assets/imgs/white-blurred.jpg);">
+  <h1 class="main-title">Sign into account</h1>
+
+  <ion-list style="width: 100% !important;">
+
+
+      <ion-item>
+          <ion-label stacked>Email Address</ion-label>
+          <ion-input type="email" [(ngModel)]="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label stacked>Password</ion-label>
+          <ion-input type="password"  [(ngModel)]="password"></ion-input>
+      </ion-item>
+
+  </ion-list>
+  <ion-row>
+      <ion-col col-12>
+          <button class="btn-orange" full ion-button (click)="login()">Sign in</button>
+      </ion-col>
+      <ion-col col-12>
+          <button class="guest-btn" full clear ion-button>Continue as a Guest</button>
+
+      </ion-col>
+      <ion-col col-12>
+        <button class="register-btn"  clear full ion-button (click)="goToRegister()">New? Register now!</button>
+
+      </ion-col>
+   
+  </ion-row>
+
+
+</ion-content>

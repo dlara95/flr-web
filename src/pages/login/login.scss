@@ -1,0 +1,77 @@
+page-login {
+    ion-content {
+        background: url(../../assets/imgs/white-blurred.jpg)
+    }
+    .toolbar-background {
+        background: transparent;
+        border: none !important;
+    }
+    .header-md::after {
+        background: none !important;
+    }
+    .bar-button {
+        color: #000 !important;
+    }
+    .item-block {
+        background: transparent;
+        border: none !important;
+    }
+    .item-label-stacked .input-wrapper .label {
+        color: #000 !important;
+        text-transform: uppercase !important;
+        font-size: 13px !important;
+    }
+    .item-inner {
+        border-color: #ff6633 !important;
+        margin-bottom: 30px;
+    }
+    .list-md>.item-block:last-child .item-inner,
+    .list-ios>.item-block:last-child .item-inner {
+        border-bottom: 1px solid #ff6633 !important;
+    }
+    .main-title {
+        padding-left: 16px;
+        font-weight: 400;
+        margin-bottom: 40px;
+    }
+    .btn-orange {
+        background: #ff6633 !important;
+        text-transform: uppercase !important;
+        box-shadow: none !important;
+    }
+    .btn-transparent {
+        color: #000 !important;
+        background: transparent;
+    }
+    .social-button {
+        background: transparent !important;
+        border: 1px solid #ff6633;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        box-shadow: none !important;
+        ion-icon {
+            color: #ff6633 !important;
+        }
+    }
+    .small-row {
+        width: 75%;
+        margin: 0 auto;
+    }
+
+    .register-btn{
+        color: gray;
+        text-transform: capitalize;
+    }
+    .guest-btn{
+        color: #000;
+        font-size: 20px;
+        text-transform: initial;
+    }
+    .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner,
+		.item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+			border-bottom-color: transparent;
+			box-shadow: inset 0 -1px 0 0 #dedede;
+			box-shadow: none;
+		}
+}
