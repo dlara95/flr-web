@@ -118,8 +118,14 @@ export class MapPage {
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          infowindow.setContent(locations[i]['operator_name'] + ' <button (click)="this.presentPopover(locations[i].products, locations[i].operator_name, locations[i].avg_stars, locations[i].count_stars">Go!</button>');
+          infowindow.setContent(locations[i]['operator_name']);
           infowindow.open(this.map, marker);
+          if(locations[i].products.length == 1){
+            that.ngZone.run(() => that.goToProductDetail(locations[i].products[0], locations[i].operator_name, locations[i].avg_stars, locations[i].count_stars));
+                  }else if(locations[i].products.length > 1){
+                    that.ngZone.run(() => that.presentPopover(locations[i].products, locations[i].operator_name, locations[i].avg_stars, locations[i].count_stars));
+      
+                  }
         }
       })(marker, i));
     }
