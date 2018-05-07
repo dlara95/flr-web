@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 import { Storage } from '@ionic/storage';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
 import { Geolocation } from '@ionic-native/geolocation';
+import { Http } from '@angular/http';
 
 @IonicPage()
 @Component({
@@ -19,7 +20,8 @@ export class ChangeLocationPage {
     public viewCtrl: ViewController,
     private storage: Storage,
     private nativeGeocoder: NativeGeocoder,
-    private geolocation: Geolocation) {
+    private geolocation: Geolocation,
+    private http: Http) {
      
   }
 
@@ -40,14 +42,17 @@ export class ChangeLocationPage {
   public getLocation(){
     if(this.searchTerm != null){
       console.log("Diferente");
-      this.nativeGeocoder.forwardGeocode(this.searchTerm)
-  .then((coordinates: NativeGeocoderForwardResult) => {
+//       this.nativeGeocoder.forwardGeocode(this.searchTerm)
+//   .then((coordinates: NativeGeocoderForwardResult) => {
     
-    console.log(this.searchTerm);
-    console.log(coordinates.latitude, coordinates.longitude);
-    this.saveCoords(coordinates.latitude, coordinates.longitude);
-  })
-  .catch((error: any) => console.log(error));
+//     console.log(this.searchTerm);
+//     console.log(coordinates.latitude, coordinates.longitude);
+//     this.saveCoords(coordinates.latitude, coordinates.longitude);
+//   })
+//   .catch((error: any) => console.log(error));
+      this.getCoords(this.searchTerm).then(localtions => {
+          console.log("Location", localtions);
+      });
     }else{
       this.dismiss();
     }
@@ -73,6 +78,9 @@ export class ChangeLocationPage {
     this.searchTerm = item.description;
   }
 
+  getCoords(term){
+    this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + term + '&key=AIzaSyBmXK9M2OQCfZuPJdgxLzWkFcdPd_Zo7ZY')
+  }
 
   
 

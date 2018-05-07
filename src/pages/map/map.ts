@@ -21,7 +21,7 @@ declare var google;
 export class MapPage {
   //@ViewChild('map') element:ElementRef;
 
-  base:any = 'http://104.131.20.153:3030/api/location/by_distance/';
+  base:any = 'https://kharron.com/api/location/by_distance/';
   lat:any;
   lng:any;
   map: any;
@@ -49,7 +49,8 @@ export class MapPage {
               this.lng = resp.coords.longitude;
               this.getLocations(resp);
                 }).catch((error) => {
-                  console.log('Error getting location', error);
+                  console.log('Error getting location Aqui', error);
+                  this.presentModal();
                 });
   }
 
