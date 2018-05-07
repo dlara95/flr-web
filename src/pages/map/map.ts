@@ -222,25 +222,29 @@ export class MapPage {
     if(locations.length < 1){
       this.showAlert();
     }else{
-      let cameraCoordinates: LatLng = new LatLng(locations[0].lat, locations[0].lot);
+      console.log("To move map", locations);
+      var center = new google.maps.LatLng(locations[0].lat, locations[0].lot);
+      this.map.panTo(center);
 
-    let cameraPosition = {
-      target: cameraCoordinates,
-      zoom: 14
-    }
+    //   let cameraCoordinates: LatLng = new LatLng(locations[0].lat, locations[0].lot);
 
-    this.map.animateCamera(cameraPosition);
+    // let cameraPosition = {
+    //   target: cameraCoordinates,
+    //   zoom: 14
+    // }
 
-    this.sortMarkers(locations);
-    this.geolocation.getCurrentPosition().then((resp) =>{
-      this.myLat = resp.coords.latitude;
-      this.myLng = resp.coords.longitude;
-      console.log("MY coords", resp.coords);
-      this.myMarker();
+    // this.map.animateCamera(cameraPosition);
 
-        }).catch((error) => {
-          console.log('Error getting location', error);
-        });
+    // this.sortMarkers(locations);
+    // this.geolocation.getCurrentPosition().then((resp) =>{
+    //   this.myLat = resp.coords.latitude;
+    //   this.myLng = resp.coords.longitude;
+    //   console.log("MY coords", resp.coords);
+    //   this.myMarker();
+
+    //     }).catch((error) => {
+    //       console.log('Error getting location', error);
+    //     });
 
     }
     

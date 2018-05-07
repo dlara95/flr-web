@@ -50,8 +50,10 @@ export class ChangeLocationPage {
 //     this.saveCoords(coordinates.latitude, coordinates.longitude);
 //   })
 //   .catch((error: any) => console.log(error));
-      this.getCoords(this.searchTerm).then(localtions => {
+      this.getCoords(this.searchTerm).subscribe(localtions => {
           console.log("Location", localtions);
+          console.log(localtions.results[0]['geometry'].location);
+          this.saveCoords(localtions.results[0]['geometry'].location.lat, localtions.results[0]['geometry'].location.lng);
       });
     }else{
       this.dismiss();
@@ -79,7 +81,8 @@ export class ChangeLocationPage {
   }
 
   getCoords(term){
-    this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + term + '&key=AIzaSyBmXK9M2OQCfZuPJdgxLzWkFcdPd_Zo7ZY')
+    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + term + '&key=AIzaSyBmXK9M2OQCfZuPJdgxLzWkFcdPd_Zo7ZY').map(res => res.json());
+
   }
 
   
