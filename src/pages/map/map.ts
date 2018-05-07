@@ -49,7 +49,17 @@ export class MapPage {
               this.lng = resp.coords.longitude;
               this.getLocations(resp);
                 }).catch((error) => {
+                  let mapEle: HTMLElement = document.getElementById('map');
+
+                  let myLatLng = {lat: 36.778259  , lng: -119.417931};
+                  this.map = new google.maps.Map(mapEle, {
+                    center: myLatLng,
+                    zoom: 16,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+              
+                  });
                   console.log('Error getting location Aqui', error);
+
                   this.presentModal();
                 });
   }
