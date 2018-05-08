@@ -1,0 +1,54 @@
+<ion-header>
+
+  <ion-navbar>
+      <ion-title>Reviews</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+<div *ngIf="reviews.length < 1 && oldreviews.length < 1">
+  <ion-row class="flex-center">
+      <img src="assets/imgs/placeholder.png">
+      <h3>Let us know what you think!</h3>
+
+  </ion-row>
+  <ion-row class="text-row">
+    <p>Reviews can only be provided by users who have booked a reservation. So, explore fun activities, create a booking and write a real life commentary 
+      about your experience.
+    </p>
+    <p>Your unbiased opinion will help others make good choices. It also help us understand what you like (or dislike)
+      about products and service.
+    </p>
+  </ion-row>
+</div>
+
+    <ion-list>
+        <ion-item *ngFor="let item of reviews" (click)="evaluate(item)">
+          <ion-avatar item-start>
+            <img src="https://findlocalrentals.net/reservations/shop_image/product/{{item.name_image}}">
+          </ion-avatar>
+          <h2 text-wrap>{{item.operator_name}}</h2>
+          <p>Booking # {{item.ID}}</p>
+          <p>Rental Date {{item.transaction_date | amDateFormat:'LL' }}</p>
+          <p><span class="orange">Write a Review <ion-icon name="ios-arrow-forward"></ion-icon></span></p>
+        </ion-item>
+        <ion-item *ngFor="let item of oldreviews" (click)="goToSummary(item)">
+          <ion-avatar item-start>
+            <img src="https://findlocalrentals.net/reservations/shop_image/product/{{item.name_image}}">
+          </ion-avatar>
+          <h2 text-wrap>{{item.operator_name}}</h2>
+          <p>Booking # {{item.bookingID}}</p>
+          <p>Rental Date {{item.transaction_date | amDateFormat:'LL' }}</p>
+          <p>Reviewed on {{item.date | amDateFormat:'LL' }}</p>
+        </ion-item>
+      </ion-list>
+
+</ion-content>
+
+<ion-footer class="custom-footer" *ngIf="reviews.length < 1 && oldreviews.length < 1">
+    <button icon-right class="full-custom-btn" ion-button full (click)="goToNearbyActivities()">
+      Explore Things To Do
+      <ion-icon name="ios-arrow-forward" style="color: #fff !important;"></ion-icon>
+    </button>
+  </ion-footer>

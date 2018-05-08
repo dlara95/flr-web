@@ -1,0 +1,53 @@
+<ion-header>
+  
+  <ion-navbar>
+      <ion-buttons start>
+          <!-- <button ion-button icon-only>
+      <ion-icon name="md-arrow-round-back"></ion-icon>
+    </button> -->
+      </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding style="background: url(assets/imgs/white-blurred.jpg);">
+  <h1 class="main-title">Edit</h1>
+
+  <ion-list style="width: 100% !important;">
+
+      <ion-item>
+          <ion-label stacked>Name</ion-label>
+          <ion-input type="text" value="{{name}}" [(ngModel)]="name"></ion-input>
+      </ion-item>
+
+      <!-- <ion-item>
+        <ion-label stacked>Username</ion-label>
+        <ion-input type="text" value="{{username}}" [(ngModel)]="username"></ion-input>
+    </ion-item> -->
+    <ion-item>
+        <ion-label stacked>Mobile</ion-label>
+        <ion-input type="number" value="{{phone}}" [(ngModel)]="phone"></ion-input>
+    </ion-item>
+
+      <ion-item>
+          <ion-label stacked>Email Address</ion-label>
+          <ion-input type="email" value="{{email}}" [(ngModel)]="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label stacked>Password</ion-label>
+          <ion-input type="password" value="{{password}}" [(ngModel)]="password"></ion-input>
+      </ion-item>
+      
+
+  </ion-list>
+  <ion-row>
+      <ion-col>
+          <button class="btn-orange" full ion-button (click)="updateUser()">Save Changes</button>
+      </ion-col>
+   
+  </ion-row>
+
+
+</ion-content>

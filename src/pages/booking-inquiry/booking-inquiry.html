@@ -1,0 +1,79 @@
+
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>Booking Inquiry <button (click)="close()" class="back-btn"><ion-icon name="close"></ion-icon></button></ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content padding>
+      <ion-col col-12>
+        <h2 class="dark">Summary</h2>
+      </ion-col>
+      
+      <ion-col col-8>
+        <h3 class="light">{{operatorName}} ({{miles}})</h3>
+      </ion-col>
+      <!-- <ion-col col-4 class="right center">
+        <button class="transparent"><img src="assets/imgs/location-icon.png" width="40"><br>
+        <span class="orange-font">See on map</span></button>
+      </ion-col> -->
+      <ion-col col-12>
+        
+      <div class="rating-box">
+				<rating [(ngModel)]="stars" 
+			  readOnly="true" 
+			  max="5" 
+			  emptyStarIconName="star-outline" 
+			  halfStarIconName="star-half" 
+			  starIconName="star" 
+			  nullable="false" 
+			  rating
+			  value="stars"></rating>
+			  <span class="count" *ngIf="count_stars != null">({{count_stars}}) </span>
+			  </div>
+      </ion-col>
+      <ion-col col-12>
+        <h3 class="dark">{{productName}}</h3>
+      </ion-col>
+      
+      
+    <ion-col col-12 class="separate-line-container">
+      <div class="separate-line"></div>
+    </ion-col>
+    <ion-col col-12 >
+      <p>One of our FUN Ambassadors will tend to your very need and get back to you regarding the selected
+        activity, but also other possible options.
+      </p>
+      <p>So, sit back and relax while we do the work for you</p>
+    </ion-col>
+  
+  
+    <ion-list>
+        <ion-item>
+            <ion-label stacked>Name</ion-label>
+            
+            <ion-input type="text" value="{{name}}" [(ngModel)]="name"></ion-input>
+          </ion-item>
+      
+        <ion-item>
+            <ion-label stacked>Email</ion-label>
+            
+            <ion-input type="email"  [(ngModel)]="email" [value]="email"></ion-input>
+        </ion-item>
+          <ion-item>
+            <ion-label stacked>Mobile</ion-label>
+            
+            <ion-input type="number" [(ngModel)]="mobile"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label text-wrap>By sending a request, I agree to  <strong (click)="goToPrivacy()">Privacy Policy</strong>
+            </ion-label>
+            <ion-checkbox checked="checked" [(ngModel)]="checked" (ionChange)="updateTerms()"></ion-checkbox>
+          </ion-item>
+      </ion-list>
+  </ion-content>
+  <ion-footer>
+      <button class="full-custom-btn" ion-button clear  (click)="checkRequireFields()">
+         SEND REQUEST 
+        </button>
+  </ion-footer>

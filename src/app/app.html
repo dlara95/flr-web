@@ -1,0 +1,7 @@
+
+<ion-nav [root]="rootPage"></ion-nav>
+<ion-content padding *ngIf="gps" class="gps-advice">
+    <h1>You need to enable your GPS Locations.</h1>
+    <h1>Go to settings and enable it.</h1>
+    <button ion-button full (click)="closeOverlay()">GOT IT!</button>
+</ion-content>

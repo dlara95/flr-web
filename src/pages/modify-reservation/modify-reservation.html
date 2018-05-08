@@ -1,0 +1,123 @@
+<ion-header>
+
+  <ion-navbar>
+      <ion-title>Reservation<button (click)="goToFeed()" class="back-btn"><ion-icon name="close"></ion-icon></button></ion-title>
+  </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+    <ion-row>
+      <ion-col col-12>
+        <h1 class="dark">confirmed<ion-icon name="checkmark-circle"></ion-icon></h1>
+      </ion-col>
+    </ion-row>
+    <ion-col col-12 class="separate-line-container">
+      <div class="separate-line"></div>
+    </ion-col> 
+    <ion-row class="booking"> 
+      <ion-col col-12>
+        <b>Booking # </b>{{bookingID}}
+      </ion-col>
+      <ion-col col-12>
+        <b>Booking Date</b> {{bookingDate |  amUtc | amDateFormat: 'MMM DD, YYYY'}}
+      </ion-col>
+      <ion-col col-12> 
+        <span class="gray">Receipt has been emailed to you.</span>	
+      </ion-col>
+        
+    </ion-row>
+    <ion-col col-12 class="separate-line-container">
+      <div class="separate-line"></div>
+    </ion-col>
+    <ion-row>
+      <ion-col col-12>
+        <h3>Reservation Summary</h3>
+        <p>
+          {{operatorName}}
+        </p>
+        <p>{{operatorAddress}}</p>
+
+        <div class="rating-box">
+          <rating [(ngModel)]="stars" 
+          readOnly="true" 
+          max="5" 
+          emptyStarIconName="star-outline" 
+          halfStarIconName="star-half"  
+          starIconName="star" 
+          nullable="false" 
+          rating
+          value="stars"></rating>
+          <span class="count" *ngIf="avg != null">({{avg}}) </span>
+          </div>
+       
+      </ion-col>
+      <ion-col col-6>
+        <div class="summary">
+          <h3>Activity</h3>
+          {{productName}}
+        </div>
+        
+      </ion-col>
+      <ion-col col-6>
+          <div class="summary">
+            <h3>Quantity</h3>
+            {{people}}
+          </div>
+          
+        </ion-col>
+      <ion-col col-6>
+        <div class="summary">
+          <h3>Starts <img src="assets/imgs/calendar-icon.png" width="20" alt=""></h3>
+          {{startDate | amUtc | amDateFormat: 'MMM DD' }}, {{tConvert(startHour)}}
+        </div>
+      </ion-col>
+      <ion-col col-6>
+        
+        <div class="summary">
+          <div *ngIf="endDate != ''">
+            <h3>Ends <img src="assets/imgs/calendar-icon.png" width="20" alt=""></h3>
+            {{endDate |  amUtc | amDateFormat: 'MMM DD' }}, {{tConvert(endHour)}}
+          </div>
+        </div>
+      </ion-col>
+      <ion-col col-12>
+          
+        <div class="summary">
+          <span class="label">Price:</span> 
+          <span class="price-val">USD {{price}} </span>
+        </div>
+        <div class="summary">
+          <span class="label"># of {{type}}:</span> 
+          <span class="price-val">{{qty}}</span>
+        </div>
+        <div class="summary">
+          <span class="label">Payment Amount:</span>
+          <span class="payment-val">USD {{getAmount()}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+    <div  id="map_canvas2" #map_canvas2 style="height: 140px;">
+    </div>
+  </ion-content>
+  <ion-footer>
+      <!-- <button class="full-custom-btn" ion-button clear (click)="goToFeed()">
+         MODIFY  
+        </button> -->
+  </ion-footer>
+  <ion-row class="overlay" *ngIf="enableOverlay">
+    <div class="close-container">
+      <ion-icon name="close" (click)="viewReservation()"></ion-icon>
+    </div>
+    <div class="overlay-info">
+      <img src="assets/imgs/chipmunk-img.png" alt="" width="120">
+    <h1>Your are all set <br>to have a fun day <br>Thank you!</h1>
+    <button class="orange-btn" ion-button clear (click)="viewReservation()">
+         view reservation 
+        </button>
+        <button class="orange-btn" ion-button clear (click)="goToFeed()">
+         book another activity 
+        </button>
+        </div>
+  </ion-row>

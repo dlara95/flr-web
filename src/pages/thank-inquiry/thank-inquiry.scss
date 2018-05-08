@@ -1,0 +1,31 @@
+page-thank-inquiry {
+    ion-content{
+        background: rgba(0, 0, 0, 0.8) !important;
+        color: #fff !important;
+        text-align: center !important;
+        font-size: 20px !important;
+    }
+
+    button{
+        background: #ed640a !important;
+        border-radius: 0 !important;
+        text-transform: uppercase !important;
+    }
+
+    img{
+        width: 100px !important;
+        margin-top: 25% !important;
+    }
+
+    .close-x button{
+        float: right;
+        background: none !important;
+        color: #fff !important;
+        font-size: 20px;
+        width: 100%;
+        text-align: right;
+        .button-inner{
+            justify-content: flex-end;
+        }
+    }
+}

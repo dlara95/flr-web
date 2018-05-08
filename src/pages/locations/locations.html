@@ -1,0 +1,21 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Locations</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let place of locations">
+      <ion-thumbnail item-start>
+        <img src="assets/imgs/marker.png">
+      </ion-thumbnail>
+      <h2 text-wrap>{{place.operator_name}}</h2>
+      <button ion-button clear item-end (click)="presentPopover(place.products, place.operator_name)">View</button>
+    </ion-item>
+  </ion-list>
+</ion-content>

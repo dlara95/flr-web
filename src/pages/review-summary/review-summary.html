@@ -1,0 +1,97 @@
+
+<ion-header>
+
+  <ion-navbar>
+      <ion-title>Review Summary</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <div class="review-bg" [ngStyle]="{'background': 'url(' + image + ')'}"></div>
+    <ion-row padding class="no-padding">
+      <span> {{productName}}</span>
+      <div class="bottom-row"></div>
+    </ion-row>
+    <ion-row padding class="no-padding">
+      <h5 class="bold no-margin">Overall rating and reviews</h5>
+      <p class="no-margin">Reviews can only be made by users who have booked a reservation.</p>
+
+      <ion-col col-7>
+          <ion-list inset>
+              <ion-item>
+                <div class="progress-box">
+                    5 <ion-icon name="star"></ion-icon>
+                    <progress-bar [progress]="getAvg(avg5)">
+                      </progress-bar> {{getAvg(avg5)}}%
+                </div>
+                
+              </ion-item>
+              <ion-item>
+                  <div class="progress-box">
+                      4 <ion-icon name="star"></ion-icon>
+                      <progress-bar [progress]="getAvg(avg4)">
+                        </progress-bar>{{getAvg(avg4)}}%
+                  </div>
+                  
+                </ion-item>
+                <ion-item>
+                    <div class="progress-box">
+                        3 <ion-icon name="star"></ion-icon>
+                        <progress-bar [progress]="getAvg(avg3)">
+                          </progress-bar>{{getAvg(avg3)}}%
+                    </div>
+                    
+                  </ion-item>
+                  <ion-item>
+                      <div class="progress-box">
+                          2 <ion-icon name="star"></ion-icon>
+                          <progress-bar [progress]="getAvg(avg2)">
+                            </progress-bar>{{getAvg(avg2)}}%
+                      </div>
+                      
+                    </ion-item>
+                    <ion-item>
+                        <div class="progress-box">
+                            1 <ion-icon name="star"></ion-icon>
+                            <progress-bar [progress]="getAvg(avg1)">
+                              </progress-bar>{{getAvg(avg1)}}%
+                        </div>
+                        
+                      </ion-item>
+              
+            </ion-list>
+      </ion-col>
+
+      <ion-col col-5>
+        <h1 class="big-orange">{{avg}}</h1>
+        <div class="rating-box">
+
+        <rating [(ngModel)]="avg" 
+        readOnly="true" 
+        max="5" 
+        emptyStarIconName="star-outline" 
+        halfStarIconName="star-half" 
+        starIconName="star" 
+        nullable="false" 
+        ></rating>
+        <span class="count"> ({{total}})</span>
+        </div>
+
+      </ion-col>
+
+    </ion-row>
+   
+    <ion-row padding>
+        <ion-list>
+            <ion-item *ngFor="let item of reviews">
+              <ion-avatar item-start>
+                <img [src]="item?.comments[0]?.userPhotoUrl">
+              </ion-avatar>
+              <p text-wrap>"{{item?.comments[0]?.commentContent}}"</p>
+            </ion-item>
+          </ion-list>
+    </ion-row>
+   
+</ion-content>

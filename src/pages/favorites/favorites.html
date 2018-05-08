@@ -1,0 +1,25 @@
+<ion-header>
+
+  <ion-navbar>
+      <ion-title>Favorites</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+
+<ion-content padding>
+  <ion-row>
+      <ion-col col-6 *ngFor="let fav of favorites, let i = index">
+          <div (click)="showConfirm(fav.favoriteProductID, i)" class="circle-bg" [ngStyle]="{'background': 'url(https://findlocalrentals.net/reservations/shop_image/product/' + fav.nameImage + ')'}">
+              <div class="icon-top">
+                  <ion-icon name="ios-close"></ion-icon>
+              </div>
+          </div>
+          <h3>{{fav.productName}}</h3>
+          <p>Added {{fav.favoriteCreatedAt | amTimeAgo}}</p>
+      </ion-col>
+
+  </ion-row>
+</ion-content>

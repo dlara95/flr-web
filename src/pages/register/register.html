@@ -1,0 +1,61 @@
+<ion-header>
+  
+  <ion-navbar>
+      <ion-buttons start>
+          <!-- <button ion-button icon-only>
+      <ion-icon name="md-arrow-round-back"></ion-icon>
+    </button> -->
+      </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding style="background: url(assets/imgs/white-blurred.jpg);">
+  <h1 class="main-title">Sign up</h1>
+
+  <ion-list style="width: 100% !important;">
+
+      <ion-item>
+          <ion-label stacked>Name</ion-label>
+          <ion-input type="text"  [(ngModel)]="name"></ion-input>
+      </ion-item>
+
+      <!-- <ion-item>
+        <ion-label stacked>Username</ion-label>
+        <ion-input autocapitalize='off' type="text"  [(ngModel)]="username"></ion-input>
+    </ion-item> -->
+    <ion-item>
+        <ion-label stacked>Mobile</ion-label>
+        <ion-input type="number" pattern="\\d*" [(ngModel)]="phone"></ion-input>
+    </ion-item> 
+
+      <ion-item>
+          <ion-label stacked>Email Address</ion-label>
+          <ion-input type="email"  [(ngModel)]="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label stacked>Password</ion-label>
+          <ion-input type="password"  [(ngModel)]="password"></ion-input>
+      </ion-item>
+
+  </ion-list>
+  <ion-row>
+      <ion-col col-12>
+          <button class="btn-orange" full ion-button (click)="checkFields()">Join Find Local Rentals</button>
+      </ion-col>
+      <p class="red" *ngIf="showMessage">* {{message}}</p>
+
+      <ion-col col-12>
+            <button class="guest-btn" full clear ion-button>Continue as a Guest</button>
+  
+        </ion-col>
+        <ion-col col-12>
+            <p class="terms-txt">By creating account you agree to our Terms of Service and Privacy Policy</p>
+        </ion-col>
+   
+  </ion-row>
+
+
+</ion-content>

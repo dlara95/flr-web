@@ -1,0 +1,127 @@
+page-review-summary {
+   
+
+      .toolbar-background {
+        background: #ff6633;
+        color: #fff;
+    }
+    .bar-button,
+    .toolbar-title {
+        color: #fff;
+    }
+
+    .review-bg{
+      height: 180px;
+      width: 100%;
+      background-size: cover !important;
+      background-repeat: no-repeat !important;
+      margin-bottom: 10px;
+
+    }
+
+    .bottom-row{
+      margin-top: 15px;
+      height: 1px;
+      width: 100%;
+      background-color: #cecaca;
+    }
+
+    .no-margin{
+        margin-top: 0;
+    }
+
+    .no-padding{
+        padding-bottom: 0 !important;
+    }
+
+    .list-md .item-block .item-inner{
+        border: none !important;
+        p{
+            color: #000;
+            font-size: 14px;
+        }
+    }
+
+    .big-orange{
+        font-size: 6rem;
+        text-align: center;
+        color: #ff6633;
+        margin-bottom: 0;
+    }
+
+    ul {
+		padding: 0px;
+		width: 100%;
+		margin-top: 0;
+		margin-bottom: 0;
+       
+        &.rating li {
+          padding: 2px !important;
+          background: none;
+		  color: #ffb400;
+		  ion-icon{
+			  font-size: 12px;
+		  }
+       
+          
+        }
+	  }
+      .rating-box{
+        display: flex;
+        align-items: center;
+        
+        span.count{
+            margin-left: 7px;
+            color: gray;
+            font-size: 12px;
+    
+        }
+    }
+
+    .progress-outer[_ngcontent-c0]{
+        background: none !important;
+        border:none !important;
+        border-radius: 0 !important;
+        margin: 0 5px;
+        .progress-inner[_ngcontent-c0]{
+            border-radius: 0 !important;
+            background: #ff6633 !important;
+            color: #ff6633 !important;
+            padding: 0;
+
+        }
+    }
+    .progress-box{
+        display: flex;
+        align-items: center;
+        ion-icon{
+            color: lightgray;
+            margin-left: 5px;
+        }
+       
+    }
+    ion-list[inset]{
+        margin: 0 !important;
+        ion-label{
+            margin: 0 !important;
+        }
+        .item-block{
+            min-height: 2.5rem !important;
+        }
+        ion-item{
+            padding-left: 0 !important;
+        }
+    }
+
+    progress-bar{
+        width: 100%;
+    }
+
+    .item-block{
+        padding-left: 0;
+      }
+
+      .list-ios[inset] .item, .list-ios > .item-block:first-child, .list-ios > .item-block:last-child, .list-ios, .list-ios .item-block .item-inner{
+          border: none !important;
+      }
+}

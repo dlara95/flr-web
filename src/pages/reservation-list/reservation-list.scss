@@ -1,0 +1,22 @@
+page-reservation-list {
+    .toolbar-background {
+        background: #ff6633;
+        color: #fff;
+    }
+    .bar-button,
+    .toolbar-title {
+        color: #fff;
+    }
+
+    ion-avatar img{
+        width: 100px !important;
+        height: 100px !important;
+    }
+
+    ion-item{
+        h2{
+            font-weight: 800 !important;
+        }
+        
+    }
+}

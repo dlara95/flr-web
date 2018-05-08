@@ -1,0 +1,107 @@
+page-payment {
+	iframe{
+        width: 100% !important;
+        //height: 100vh;
+    }
+    /*header*/
+	.toolbar-background {
+		background: #f68f54;
+	}
+	.toolbar-title{
+		color: white;
+		font-weight: lighter;
+		text-align: center;
+	}
+	.title-ios{
+		padding: 0 20px;
+	}
+	.ion-md-close{
+		float: right;
+	}
+	.ion-ios-close{
+		float: right;
+		font-size: 2.4rem;
+	}
+	.back-button-text-ios{display: none;}
+	.ion-md-close{float: right;}
+	.back-button-icon{color: white;}
+	/*input*/
+	.item-inner{
+		margin-bottom: 20px;
+	}
+	/*checkbox*/
+	.item-checkbox{
+		font-size: 1.3rem;
+		.checkbox-icon{
+			background: transparent;
+		    color: black;
+		    border: 1px solid #999999;
+		    padding: 10px;
+		    .checkbox-inner{
+				border-color: #999999;
+			    top: 3px;
+			    left: 8px;
+			}
+		}
+		.item-inner{
+			border: 0 !important;
+	    	color: #9f9f9f;
+	    	margin-bottom: 0 !important;
+		}
+		.checkbox{
+			margin-right: 10px !important;
+		}
+
+		
+	}
+	/*footer*/
+	ion-footer{
+		background: #ed640a;
+		text-align: center;
+	}
+	.full-custom-btn{
+		font-size: 2rem;
+	    text-transform: uppercase;
+	    color: white;
+	    text-align: center;
+	}
+	.dark{
+		font-size: 16px;
+		font-weight: 900;
+		padding: 0 20px;
+	}
+	.footer-md .button-clear-md{height: 4rem}
+	.footer-ios .button-ios{height: 4rem}
+
+	.item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner,
+		.item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+			border-bottom-color: transparent;
+			box-shadow: inset 0 -1px 0 0 #999999;
+		}
+ion-icon{
+	color: #000;
+}
+
+.terms-item{
+	.item-inner{
+		border: none !important;
+	}
+	ion-label{
+		font-weight: 900 !important;
+		font-size: 14px;
+		padding-left: 5px;
+	}
+}
+
+.text-input{
+	font-size: 13px !important;
+}
+item-md.item-input.item-input-has-focus .item-inner, .item-md.item-input.input-has-focus .item-inner {
+    border-bottom-color: #dedede;
+  
+}
+}
+
+
+
+
