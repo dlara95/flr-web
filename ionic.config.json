@@ -7,8 +7,8 @@
   },
   "proxies": [
     {
-      "path": "http://localhost:8080",
-      "proxyUrl": "https://maps.googleapis.com"
+      "path": "/maps",
+      "proxyUrl": "https://maps.googleapis.com/maps"
     }
   ]
 }

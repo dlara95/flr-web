@@ -1,18 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, NgZone, OnInit, ViewChild} from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Http } from '@angular/http';
+import { MapsAPILoader } from '@agm/core';
+
+declare var google;
 
 @IonicPage()
 @Component({
   selector: 'page-change-location',
   templateUrl: 'change-location.html',
 })
-export class ChangeLocationPage {
+export class ChangeLocationPage implements OnInit {
 
   searchTerm:any;
+  searchLat:any;
+  searchLng:any;
+  
+  @ViewChild("search")
+  public searchElementRef: ElementRef;
 
   constructor( 
     public navCtrl: NavController, 
@@ -21,7 +29,9 @@ export class ChangeLocationPage {
     private storage: Storage,
     private nativeGeocoder: NativeGeocoder,
     private geolocation: Geolocation,
-    private http: Http) {
+    private http: Http,
+    private mapsAPILoader: MapsAPILoader,
+    private ngZone: NgZone) {
      
   }
 
@@ -42,19 +52,13 @@ export class ChangeLocationPage {
   public getLocation(){
     if(this.searchTerm != null){
       console.log("Diferente");
-//       this.nativeGeocoder.forwardGeocode(this.searchTerm)
-//   .then((coordinates: NativeGeocoderForwardResult) => {
-    
-//     console.log(this.searchTerm);
-//     console.log(coordinates.latitude, coordinates.longitude);
-//     this.saveCoords(coordinates.latitude, coordinates.longitude);
-//   })
-//   .catch((error: any) => console.log(error));
-      this.getCoords(this.searchTerm).subscribe(localtions => {
-          console.log("Location", localtions);
-          console.log(localtions.results[0]['geometry'].location);
-          this.saveCoords(localtions.results[0]['geometry'].location.lat, localtions.results[0]['geometry'].location.lng);
-      });
+      this.saveCoords(this.searchLat, this.searchLng);
+
+//       this.getCoords(this.searchTerm).subscribe(localtions => {
+//           console.log("Location", localtions);
+//           console.log(localtions.results[0]['geometry'].location);
+//           this.saveCoords(localtions.results[0]['geometry'].location.lat, localtions.results[0]['geometry'].location.lng);
+//       });
     }else{
       this.dismiss();
     }
@@ -80,9 +84,46 @@ export class ChangeLocationPage {
     this.searchTerm = item.description;
   }
 
-  getCoords(term){
-    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + term + '&key=AIzaSyBmXK9M2OQCfZuPJdgxLzWkFcdPd_Zo7ZY').map(res => res.json());
+//   getCoords(term){
+//     return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + term + '&key=AIzaSyBmXK9M2OQCfZuPJdgxLzWkFcdPd_Zo7ZY').map(res => res.json());
 
+//   }
+  
+  onSearchInput(){
+    console.log("Termino", this.searchTerm);
+    var autocomplete = new google.maps.places.Autocomplete(this.searchTerm);
+    console.log(autocomplete);
+
+  }
+  
+  ngOnInit() {
+
+
+   
+
+    //load Places Autocomplete
+    this.mapsAPILoader.load().then(() => {
+      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+        types: ["(cities)"]
+      });
+      autocomplete.addListener("place_changed", () => {
+        this.ngZone.run(() => {
+          //get the place result
+          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+
+          //verify result
+          if (place.geometry === undefined || place.geometry === null) {
+            return;
+          }else{
+            console.log("place", place.geometry.location.lat());
+            this.searchTerm = place.formatted_address;
+            this.searchLat = place.geometry.location.lat();
+            this.searchLng = place.geometry.location.lng();
+          }
+
+        });
+      });
+    });
   }
 
   

@@ -47,7 +47,14 @@ export class MapPage {
     this.geolocation.getCurrentPosition().then((resp) =>{
               this.lat = resp.coords.latitude;
               this.lng = resp.coords.longitude;
-              this.getLocations(resp);
+              console.log(resp);
+              let geoCoords = {
+                coords: {
+                  latitude: resp.coords.latitude,
+                  longitude: resp.coords.longitude
+                }
+              }
+              this.getLocations(geoCoords);
                 }).catch((error) => {
                   this.lat = 36.778259;
                   this.lng = -119.417931;
@@ -57,6 +64,7 @@ export class MapPage {
                       longitude: -119.417931
                     }
                   }
+                  console.log(fakeCoords);
                   this.getLocations(fakeCoords);
 
                   console.log('Error getting location Aqui', error);
@@ -94,7 +102,7 @@ export class MapPage {
     // create map
     this.map = new google.maps.Map(mapEle, {
       center: myLatLng,
-      zoom: 16,
+      zoom: 12,
       mapTypeId: google.maps.MapTypeId.ROADMAP
 
     });
@@ -197,19 +205,19 @@ export class MapPage {
 
   getLocations(response){
     
-    this.http.get(this.base + this.lat + '/' + this.lng + '/10000')
+    this.http.get(this.base + this.lat + '/' + this.lng + '/40000')
     .map(res => res.json())
     .subscribe(locations => this.loadMap(response, locations))
   }
 
   updateLocations(){
-    this.http.get(this.base + this.lat + '/' + this.lng + '/10000')
+    this.http.get(this.base + this.lat + '/' + this.lng + '/40000')
     .map(res => res.json())
     .subscribe(locations => this.moveMap(locations))
   }
 
   updateMarkers(){
-    this.http.get(this.base + this.lat + '/' + this.lng + '/10000')
+    this.http.get(this.base + this.lat + '/' + this.lng + '/40000')
     .map(res => res.json())
     .subscribe(locations => this.sortMarkers(locations))
   }
@@ -237,31 +245,23 @@ export class MapPage {
 
   moveMap(locations){
     if(locations.length < 1){
-      this.showAlert();
+      //this.showAlert();
+       let position = {
+          "lat" : this.lat,
+          "lng" : this.lng
+      }
+     this.map.panTo(position);
     }else{
-      console.log("To move map", locations);
-      var center = new google.maps.LatLng(locations[0].lat, locations[0].lot);
-      this.map.panTo(center);
-
-    //   let cameraCoordinates: LatLng = new LatLng(locations[0].lat, locations[0].lot);
-
-    // let cameraPosition = {
-    //   target: cameraCoordinates,
-    //   zoom: 14
-    // }
-
-    // this.map.animateCamera(cameraPosition);
-
-    // this.sortMarkers(locations);
-    // this.geolocation.getCurrentPosition().then((resp) =>{
-    //   this.myLat = resp.coords.latitude;
-    //   this.myLng = resp.coords.longitude;
-    //   console.log("MY coords", resp.coords);
-    //   this.myMarker();
-
-    //     }).catch((error) => {
-    //       console.log('Error getting location', error);
-    //     });
+      console.log("To move map", locations[0].lat);
+      let position = {
+          "lat" : parseFloat( locations[0].lat ),
+          "lng" : parseFloat( locations[0].lot )
+      }
+      console.log("Coords", position);
+      var center = new google.maps.LatLng(position);
+      console.log("Center", center);
+      this.map.panTo(position);
+      //this.map.panTo(center);
 
     }
     
@@ -284,6 +284,7 @@ export class MapPage {
 
   sortMarkers(locations){
     console.log("Locaciones", locations);
+    console.log(this.map);
     
 
       var infowindow = new google.maps.InfoWindow();
@@ -294,7 +295,8 @@ export class MapPage {
   
       for (i = 0; i < locations.length; i++) {  
         marker = new google.maps.Marker({
-          position: new google.maps.LatLng(locations[i]['lat'], locations[i]['lot']),
+//           position:  new google.maps.LatLng(locations[i]['lat'], locations[i]['lot']),
+          position: {lat: parseFloat(locations[i]['lat']), lng: parseFloat(locations[i]['lot']) },
           map: this.map,
           icon: 'https://findlocalrentals.net/reservations/shop_image/gmap/' + locations[i]['products_types_name_image'],
         });

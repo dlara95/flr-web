@@ -11,7 +11,7 @@ declare var WindowsAzure: any;
 @Injectable()
 export class UsersProvider {
   HAS_LOGGED_IN = 'hasLoggedIn';
-	base:string = 'http://104.131.20.153:3030/api/';
+	base:string = 'https://kharron.com/api/';
 	client: any;
 	userid: string;
   loggedIn: boolean = false;

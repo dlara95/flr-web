@@ -46,4 +46,15 @@ page-change-location {
 		}
 	
 	}
+  
+  form{
+    width: 80%;
+    margin: 0 auto;
+    input{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-shadow: none;
+    }
+  }
 }

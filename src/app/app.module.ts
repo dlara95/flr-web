@@ -45,6 +45,7 @@ import { ThankInquiryPage } from '../pages/thank-inquiry/thank-inquiry';
 import { ReviewSummaryPage } from '../pages/review-summary/review-summary';
 import {ProgressBarModule} from "angular-progress-bar"
 import { PrivacyPage } from '../pages/privacy/privacy';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -83,8 +84,11 @@ import { PrivacyPage } from '../pages/privacy/privacy';
     Ionic2RatingModule,
     MomentModule,
     GooglePlacesAutocompleteComponentModule,
-    ProgressBarModule
-
+    ProgressBarModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyBmXK9M2OQCfZuPJdgxLzWkFcdPd_Zo7ZY",
+      libraries: ["places"]
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
