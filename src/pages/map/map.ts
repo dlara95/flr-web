@@ -205,19 +205,19 @@ export class MapPage {
 
   getLocations(response){
     
-    this.http.get(this.base + this.lat + '/' + this.lng + '/40000')
+    this.http.get(this.base + this.lat + '/' + this.lng + '/25000')
     .map(res => res.json())
     .subscribe(locations => this.loadMap(response, locations))
   }
 
   updateLocations(){
-    this.http.get(this.base + this.lat + '/' + this.lng + '/40000')
+    this.http.get(this.base + this.lat + '/' + this.lng + '/25000')
     .map(res => res.json())
     .subscribe(locations => this.moveMap(locations))
   }
 
   updateMarkers(){
-    this.http.get(this.base + this.lat + '/' + this.lng + '/40000')
+    this.http.get(this.base + this.lat + '/' + this.lng + '/25000')
     .map(res => res.json())
     .subscribe(locations => this.sortMarkers(locations))
   }
