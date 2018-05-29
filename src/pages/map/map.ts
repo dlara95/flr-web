@@ -21,7 +21,7 @@ declare var google;
 export class MapPage {
   //@ViewChild('map') element:ElementRef;
 
-  base:any = 'https://kharron.com/api/location/by_distance/';
+  base:any = 'https://reserverentals.com/api/location/by_distance/';
   lat:any;
   lng:any;
   map: any;
@@ -205,19 +205,19 @@ export class MapPage {
 
   getLocations(response){
     
-    this.http.get(this.base + this.lat + '/' + this.lng + '/25000')
+    this.http.get(this.base + this.lat + '/' + this.lng + '/16000')
     .map(res => res.json())
     .subscribe(locations => this.loadMap(response, locations))
   }
 
   updateLocations(){
-    this.http.get(this.base + this.lat + '/' + this.lng + '/25000')
+    this.http.get(this.base + this.lat + '/' + this.lng + '/16000')
     .map(res => res.json())
     .subscribe(locations => this.moveMap(locations))
   }
 
   updateMarkers(){
-    this.http.get(this.base + this.lat + '/' + this.lng + '/25000')
+    this.http.get(this.base + this.lat + '/' + this.lng + '/16000')
     .map(res => res.json())
     .subscribe(locations => this.sortMarkers(locations))
   }
